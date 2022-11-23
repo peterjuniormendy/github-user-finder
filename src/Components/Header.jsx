@@ -10,12 +10,6 @@ const Header = () => {
   const theme = localStorage.getItem("theme");
   const systemTheme = window.matchMedia("prefers-color-sheme: dark").matches;
 
-  const toggleLogo = () => {
-    if (theme === "dark" || (!theme && systemTheme)) {
-      return logo_dark;
-    }
-    return logo;
-  };
   const checkTheme = () => {
     if (theme === "dark" || (!theme && systemTheme)) {
       document.documentElement.classList.add("dark");
