@@ -4,6 +4,7 @@ import SearchIcon from "./SearchIcon";
 
 const FilterSearchBar = ({ getUserData }) => {
   const [userName, setUserName] = useState("");
+  const [state, setState] = useState("idel");
   const errorMessage = useRef("");
 
   const handleUserName = (e) => {
@@ -13,17 +14,18 @@ const FilterSearchBar = ({ getUserData }) => {
 
   const fetchUserData = async (event) => {
     event.preventDefault();
+    userName && setState("submitted");
     const url = "https://api.github.com/users/";
     const response = await fetch(url + userName, {
       credentials: "same-origin",
     });
     if (userName && !response.ok) {
-      errorMessage.current.classList.contains("hidden")
-        ? errorMessage.current.classList.remove("hidden")
-        : "";
+      const errorClass = errorMessage.current.classList;
+      errorClass.contains("hidden") ? errorClass.remove("hidden") : "";
     }
     const data = await response.json();
     getUserData(data);
+    setState("idel");
   };
 
   return (
@@ -52,7 +54,7 @@ const FilterSearchBar = ({ getUserData }) => {
           className="bg-[#295cff] hover:bg-[#456be5] w-1/5 py-1 sm:py-2 px-1 sm:px-2 rounded-2xl text-sm sm:text-lg md:text-xl lg:text-2xl font-semibold text-white"
           type="submit"
         >
-          Search
+          {state === "idel" ? "Search" : "Loading..."}
         </button>
       </form>
     </div>
