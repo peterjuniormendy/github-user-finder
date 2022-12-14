@@ -1,8 +1,8 @@
 import React from "react";
-import locationIcon from "../assets/icon-location.svg";
-import twitterIcon from "../assets/icon-twitter.svg";
-import websiteIcon from "../assets/icon-website.svg";
-import companyIcon from "../assets/icon-company.svg";
+// import locationIcon from "../assets/icon-location.svg";
+// import twitterIcon from "../assets/icon-twitter.svg";
+// import websiteIcon from "../assets/icon-website.svg";
+// import companyIcon from "../assets/icon-company.svg";
 import UserConnections from "./UserConnections";
 import UserBio from "./UserBio";
 import UserDetails from "./UserDetails";
@@ -20,14 +20,7 @@ const Main = (props) => {
         <div className="col-span-3 lg:col-start-2 mt-2 space-y-7 lg:mt-[-50px]">
           <UserBio props={props} defaultUser={defaultUser} />
           <UserConnections props={props} defaultUser={defaultUser} />
-          <UserLinks
-            props={props}
-            icon1={locationIcon}
-            icon2={twitterIcon}
-            icon3={websiteIcon}
-            icon4={companyIcon}
-            defaultUser={defaultUser}
-          />
+          <UserLinks props={props} defaultUser={defaultUser} />
         </div>
       </div>
     </main>

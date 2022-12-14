@@ -6,7 +6,13 @@ const Connections = ({ props, defaultUser }) => {
       <div>
         <p className="text-slate-600 dark:text-slate-400">Repos</p>
         <h3 className="text-xl font-semibold">
-          {props.public_repos || defaultUser.public_repos}
+          {props.public_repos || props.public_repos === 0
+            ? props.public_repos
+            : props &&
+              Object.keys(props).length === 0 &&
+              defaultUser.public_repos
+            ? defaultUser.public_repos
+            : 0}
         </h3>
       </div>
       <div>
@@ -14,13 +20,19 @@ const Connections = ({ props, defaultUser }) => {
         <h3 className="text-xl font-semibold">
           {props.followers || props.followers === 0
             ? props.followers
-            : defaultUser.followers}
+            : props && Object.keys(props).length === 0 && defaultUser.followers
+            ? defaultUser.followers
+            : 0}
         </h3>
       </div>
       <div>
         <p className="text-slate-600 dark:text-slate-400">Following</p>
         <h3 className="text-xl font-semibold">
-          {props.following || defaultUser.following}
+          {props.following || props.following === 0
+            ? props.following
+            : props && Object.keys(props).length === 0 && defaultUser.following
+            ? defaultUser.following
+            : 0}
         </h3>
       </div>
     </div>
