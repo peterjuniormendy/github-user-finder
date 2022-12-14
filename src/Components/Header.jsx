@@ -1,8 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import sunIcon from "../assets/icon-sun.svg";
-import logo from "../assets/logo.svg";
-import logo_dark from "../assets/logo_dark.svg";
+import moon from "../assets/moon-solid.svg";
 
 const Header = () => {
   const [colorTheme, setColorTheme] = useState("");
@@ -38,7 +37,11 @@ const Header = () => {
         <span className="uppercase tracking-widest text-sm font-medium">
           {colorTheme || (!systemTheme && "Light")}
         </span>
-        <img src={sunIcon} alt="location" className="inline-block ml-2" />
+        <img
+          src={theme === "dark" || (!theme && systemTheme) ? sunIcon : moon}
+          alt="theme icon"
+          className="inline-block ml-2 w-5"
+        />
       </div>
     </header>
   );

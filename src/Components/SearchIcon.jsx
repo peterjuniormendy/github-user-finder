@@ -1,5 +1,4 @@
 import React from "react";
-import spinner from "../assets/spinners/spinner.svg";
 
 const SearchIcon = (props) => {
   return (
