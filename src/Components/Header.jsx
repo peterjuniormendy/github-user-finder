@@ -27,6 +27,14 @@ const Header = () => {
     setColorTheme("Light");
   };
 
+  const toggleIcons = () => {
+    if (document.documentElement.classList.contains("dark")) {
+      return sunIcon;
+    } else {
+      return moon;
+    }
+  };
+
   checkTheme();
   return (
     <header className="lg:max-w-3xl md:max-w-xl sm:max-w-lg mx-auto py-6 flex justify-between items-center rounded-2xl text-slate-900 dark:text-white">
@@ -40,7 +48,7 @@ const Header = () => {
         <img
           src={theme === "dark" || (!theme && systemTheme) ? sunIcon : moon}
           alt="theme icon"
-          className="inline-block ml-2 w-5"
+          className="inline-block ml-2 w-4"
         />
       </div>
     </header>

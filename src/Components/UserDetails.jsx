@@ -1,6 +1,46 @@
 import React from "react";
 
 const UserDetails = ({ props, defaultUser }) => {
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "June",
+    "July",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  let date, month, day, year, fullDate;
+
+  if (props.created_at) {
+    date = new Date(props.created_at);
+    month = months[date.getMonth()];
+    day = date.getDate();
+    year = date.getFullYear();
+    fullDate = `${month} ${day} ${year}`;
+  } else if (
+    props &&
+    Object.keys(props).length === 0 &&
+    defaultUser.created_at
+  ) {
+    date = new Date(defaultUser.created_at);
+    month = months[date.getMonth()];
+    day = date.getDate();
+    year = date.getFullYear();
+    fullDate = `${month} ${day} ${year}`;
+  } else {
+    date = new Date();
+    month = months[date.getMonth()];
+    day = date.getDate();
+    year = date.getFullYear();
+    fullDate = `${month} ${day} ${year}`;
+  }
+
   return (
     <div className="lg:col-span-3 space-y-1.5 lg:flex justify-between mt-1.5 sm:mt-3">
       <div className="space-y-1">
@@ -20,11 +60,7 @@ const UserDetails = ({ props, defaultUser }) => {
         </p>
       </div>
       <p className="text-slate-600 dark:text-slate-300 text-base sm:text-lg">
-        {props.created_at
-          ? props.created_at
-          : props && Object.keys(props).length === 0 && defaultUser.created_at
-          ? defaultUser.created_at
-          : "No create date"}
+        {fullDate}
       </p>
     </div>
   );
